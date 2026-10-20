@@ -10,6 +10,7 @@ Packaged as a lightweight, containerized Docker service suitable for running on 
 
 * **🔄 Automated Synchronization**: Runs as a set-and-forget background daemon polling Hammerhead Cloud for new rides at configurable intervals (e.g., every 60 minutes).
 * **🎯 Garmin Physio TrueUp & Training Metrics**: By default, third-party cycling computer rides uploaded to Garmin Connect do not calculate Training Load or Training Effect. **Karoo2Garmin** patches the FIT file metadata (`FileIdMessage` and `DeviceInfoMessage`) to identify as a **Garmin Edge 1040** (or Edge 840), unlocking full physiological training metrics in Garmin Connect.
+* **⌚ Watch-Safe Ride Summaries**: Garmin Connect syncs a summary of each ride to your Garmin watch, built from the file's activity, session and lap messages. The Karoo writes these without fields every Garmin device includes (session count, lap indexes, events, bounding box), and opening such a ride in the watch's activity history can reboot the watch. **Karoo2Garmin** rebuilds them the way a Garmin Edge writes them.
 * **🛰️ Sensor & Shifting Data Preservation**: Unlike virtual cycling converters, **Karoo2Garmin** preserves all outdoor GPS trackpoints, barometric elevation, temperatures, external ANT+/BLE sensors (heart rate, power meters, radar), and electronic gear shifting events (SRAM AXS and Shimano Di2).
 * **🛡️ Multi-Tier Duplicate Prevention**:
   1. **Persistent SQLite Store**: Remembers synced activity IDs across reboots and container restarts.
@@ -166,7 +167,7 @@ All settings can be configured directly inside `docker-compose.yml`, environment
 | `CHECK_DUPLICATES` | `true` | Verify if ride is already in Garmin Connect before uploading |
 | `DUPLICATE_THRESHOLD_HOURS` | `2` | Matching time window around ride timestamp (prevents dual-recording dupes) |
 | `SPOOF_GARMIN_DEVICE`| `true` | Patch FIT file with Garmin Edge device signatures |
-| `DEVICE_PRODUCT_ID` | `3927` | Garmin Device ID (`3927` = Edge 1040, `4024` = Edge 840) |
+| `DEVICE_PRODUCT_ID` | `3843` | Garmin Device ID (`3843` = Edge 1040, `4062` = Edge 840) |
 | `DEVICE_SOFTWARE_VERSION` | `27.10` | Device firmware version reported in FIT header |
 | `ATHLETE_FTP` | `0` | Optional FTP wattage for Normalized Power / TSS calculations |
 | `LOG_LEVEL` | `INFO` | Logging verbosity (`DEBUG`, `INFO`, `WARNING`, `ERROR`) |

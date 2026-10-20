@@ -20,7 +20,7 @@ class TestConfig(unittest.TestCase):
             "KAROO_PASSWORD": "secretpassword",
             "DATA_DIR": "/tmp/test_karoo_data",
             "SYNC_INTERVAL_MINUTES": "30",
-            "DEVICE_PRODUCT_ID": "4024",
+            "DEVICE_PRODUCT_ID": "4062",
         },
         clear=True,
     )
@@ -29,7 +29,7 @@ class TestConfig(unittest.TestCase):
         self.assertEqual(cfg.karoo_email, "test@hammerhead.io")
         self.assertEqual(cfg.karoo_password, "secretpassword")
         self.assertEqual(cfg.sync_interval_minutes, 30)
-        self.assertEqual(cfg.device_product_id, 4024)
+        self.assertEqual(cfg.device_product_id, 4062)
         self.assertTrue(cfg.check_duplicates)
         self.assertTrue(cfg.spoof_garmin_device)
 

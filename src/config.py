@@ -35,7 +35,7 @@ class Config:
 
     # FIT enhancement settings
     spoof_garmin_device: bool = True
-    device_product_id: int = 3927  # Garmin Edge 1040 (default), 4024 for Edge 840
+    device_product_id: int = 3843  # Garmin Edge 1040 (default), 4062 for Edge 840
     device_software_version: float = 27.10
     athlete_ftp: float = 0.0
 
@@ -114,7 +114,7 @@ class Config:
         dup_threshold = int(os.getenv("DUPLICATE_THRESHOLD_HOURS", "2"))
 
         spoof_device = os.getenv("SPOOF_GARMIN_DEVICE", "true").lower() in ("true", "1", "yes")
-        device_product = int(os.getenv("DEVICE_PRODUCT_ID", "3927"))
+        device_product = int(os.getenv("DEVICE_PRODUCT_ID", "3843"))
         device_sw = float(os.getenv("DEVICE_SOFTWARE_VERSION", "27.10"))
         ftp = float(os.getenv("ATHLETE_FTP", "0.0"))
 
